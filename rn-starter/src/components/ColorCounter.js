@@ -5,7 +5,7 @@ const ColorCounter = ({ color, onIncrement, onDecrement, onRandom }) => {
     return (
         <View>
             <Text style={styles.textStyle}>{color}</Text>
-            <Button onPress={() => onRandom()} title={`Random ${color}`}/>
+            {/*<Button onPress={() => onRandom()} title={`Random ${color}`}/>*/}
             <Button onPress={() => onIncrement()} title={`Increase ${color}`}/>
             <Button onPress={() => onDecrement()} title={`Decrease ${color}`}/>
         </View>
