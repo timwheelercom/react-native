@@ -6,7 +6,7 @@ export default () => {
     const [results, setResults] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
 
-    const searchApi = async (searchTerm) => {
+    const searchApi = async (searchTerm, location = 'providence') => {
         setResults([]);
         setErrorMessage('');
         try {
@@ -14,7 +14,7 @@ export default () => {
                 params: {
                     limit: 50,
                     term: searchTerm,
-                    location: 'providence'
+                    location
                 }
             });
             setResults(response.data.businesses);
