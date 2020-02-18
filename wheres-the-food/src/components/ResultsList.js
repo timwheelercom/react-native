@@ -1,25 +1,28 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import { withNavigation } from "react-navigation";
 import BusinessCard from "./BusinessCard";
 
-const ResultsList = ({ title, results }) => {
+const ResultsList = ({ title, results, navigation }) => {
     return (
         <View>
             <Text style={ styles.textStyle }>{ title }</Text>
             <FlatList
                 data={ results }
                 horizontal
-                showsHorizontalScrollIndicator={false}
+                showsHorizontalScrollIndicator={ false }
                 keyExtractor={ (result) => result.id }
                 renderItem={ ({ item }) => {
                     return (
-                        <BusinessCard
-                            businessName={item.name}
-                            displayAddress={item.location.display_address}
-                            imgUrl={item.image_url}
-                            rating={item.rating}
-                            reviewCount={item.review_count}
-                        />
+                        <TouchableOpacity onPress={() => navigation.navigate('BusinessDetail', { id: item.id })}>
+                            <BusinessCard
+                                businessName={ item.name }
+                                displayAddress={ item.location.display_address }
+                                imgUrl={ item.image_url }
+                                rating={ item.rating }
+                                reviewCount={ item.review_count }
+                            />
+                        </TouchableOpacity>
                     )
                 } }
 
@@ -39,4 +42,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default ResultsList;
+export default withNavigation(ResultsList);

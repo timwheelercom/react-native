@@ -6,7 +6,7 @@ export default () => {
     const [results, setResults] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
 
-    const searchApi = async (searchTerm, location = 'providence') => {
+    const searchApi = async (searchTerm = 'Cocktails' , location = 'Providence, RI') => {
         setResults([]);
         setErrorMessage('');
         try {
@@ -25,7 +25,7 @@ export default () => {
     };
 
     useEffect(() => {
-        searchApi('pasta').catch(err => err);
+        searchApi().catch(err => err);
     }, []);
 
     return [searchApi, results, errorMessage];
